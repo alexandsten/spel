@@ -135,12 +135,14 @@ function newPig() {
 function checkHit() {
 	let cSize = carElem.offsetWidth;
 	let pSize = pigElem.offsetWidth;
-	let cL =  x + "px";
-	let cT =  y + "px";
-	let pL =  x + "px";
-	let pT =  y + "px";
+	let cL =  parseInt(carElem.style.left);
+	let cT =  parseInt(carElem.style.top);
+	let pL =  parseInt(pigElem.style.left);
+	let pT =  parseInt(pigElem.style.top);
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		clearTimeout(pigTimerRef);
 		document.getElementById("pig").src = "smack.png";
+		let now = new Date();
+		startTime = now.getTime();
 	}
 }
