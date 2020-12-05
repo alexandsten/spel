@@ -118,7 +118,7 @@ function moveCar() {
 	carElem.style.top = y + "px";
 	timerRef = setTimeout(moveCar,timerStep);
 	/* === Tillägg i labben === */
-	
+	checkHit();
 
 } // End moveCar
 // ------------------------------
@@ -164,12 +164,12 @@ function checkHit() {
 	if (catchedPig=true){
 		return;
 	}
-	let cSize = carElem.offsetWidth;
-	let pSize = pigElem.offsetWidth;
+	let cSize = carElem.offsetWidth+"px";
+	let pSize = pigElem.offsetWidth+"px"; 
 	let cL =  parseInt(carElem.style.left);
 	let cT =  parseInt(carElem.style.top);
 	let pL =  parseInt(pigElem.style.left);
-	let pT =  parseInt(pigElem.style.top);
+	let pT =  parseInt(pigElem.style.top); 
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		alert("Hello! I am an alert box!!");
 		clearTimeout(pigTimerRef);
