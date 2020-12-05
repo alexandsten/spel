@@ -171,12 +171,12 @@ function checkHit() {
 	let pL =  parseInt(pigElem.style.left);
 	let pT =  parseInt(pigElem.style.top); 
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
-		alert("Hello! I am an alert box!!");
 		clearTimeout(pigTimerRef);
 		document.getElementById("pig").src = "img/smack.png";
 		pigTimerRef = setTimeout(newPig,pigDuration);
 		hitCounter++;
 		hitCounterElem = hitCounter;
 		catchedPig = true;
+		alert("Hello! I am an alert box!!");
 	}
 }
