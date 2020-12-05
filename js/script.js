@@ -114,15 +114,16 @@ function moveCar() {
 
 /* === Tillägg av nya funktioner i labben === */
 
-function newPig {	
-	let xLimit = boardwidth-(pigwidth+20) = boardwidth-pigwidth-20;
+function newPig() {	
+	/* let xLimit = boardwidth-(pigwidth+20) = boardwidth-pigwidth-20; */
+	let xLimit = boardwidth-(pigwidth+20);
 	let yLimit = boardheight - pigheight - 20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
-	let xLimit = boardwidth.offsetWidth - pigElem.offsetWidth-20;
-	let xLimit = boardwidth.offsetHeight - pigElem.offsetHeight-20;
-	let x = Math.floor(xLimit * Math.random()) + 10;
-	let y = Math.floor(yLimit * Math.random()) + 10;
+	xLimit = boardwidth.offsetWidth - pigElem.offsetWidth-20;
+	xLimit = boardwidth.offsetHeight - pigElem.offsetHeight-20;
+	x = Math.floor(xLimit * Math.random()) + 10;
+	y = Math.floor(yLimit * Math.random()) + 10;
 	pigElem.style.left = x + "px";
 	pigElem.style.top = y + "px";
 	document.getElementById("pig").style.display = "visible";
