@@ -14,6 +14,10 @@ var stopBtn;			// Referens till stoppknappen
 var pigElem             //gris
 var pigTimerRef = null;       // gris timer
 const pigDuration = 2000;
+var pigNr;
+var hitCounter;
+var pigNrElem;
+var hitCounterElem;
 // ------------------------------
 // Initiera globala variabler och koppla funktion till knapp
 function init() {
@@ -31,8 +35,9 @@ function init() {
 		startBtn.disabled = false;
 		stopBtn.disabled = true;
 	/* === Tillägg i labben === */
-		pigElem = document.getElementById("pig")
-
+		pigElem = document.getElementById("pig");
+		pignrElem = document.getElementById("pigNr");
+		hitCounterElem = document.getElementById("hitCounter");
 
 } // End init
 window.addEventListener("load",init);
@@ -145,6 +150,5 @@ function checkHit() {
 		document.getElementById("pig").src = "img/smack.png";
 		let now = new Date();
 		startTime = now.getTime();
-
 	}
 }
