@@ -122,13 +122,13 @@ function newPig() {
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
 	let xLimit = boardwidth.offsetWidth - pigElem.offsetWidth-20; */
-	let yLimit = boardheight - pigheight - 20;
-	let xLimit = boardwidth.offsetHeight - pigElem.offsetHeight-20;
+	let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
+	let xLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
 	pigElem.style.left = x + "px";
 	pigElem.style.top = y + "px";
-	document.getElementById("pig").style.display = "visible";
+	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
 }
 
