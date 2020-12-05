@@ -128,6 +128,7 @@ function newPig() {
 	let y = Math.floor(yLimit * Math.random()) + 10;
 	pigElem.style.left = x + "px";
 	pigElem.style.top = y + "px";
+	document.getElementById("pig").src = "img/pig.png";
 	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
 }
@@ -141,8 +142,9 @@ function checkHit() {
 	let pT =  parseInt(pigElem.style.top);
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		clearTimeout(pigTimerRef);
-		document.getElementById("pig").src = "smack.png";
+		document.getElementById("pig").src = "img/smack.png";
 		let now = new Date();
 		startTime = now.getTime();
+
 	}
 }
