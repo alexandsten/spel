@@ -123,7 +123,7 @@ function newPig() {
 	let y = Math.floor(yLimit * Math.random()) + 10;
 	let xLimit = boardwidth.offsetWidth - pigElem.offsetWidth-20; */
 	let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
-	let xLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
+	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
 	pigElem.style.left = x + "px";
