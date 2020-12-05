@@ -161,11 +161,11 @@ function newPig() {
 }
 
 function checkHit() {
-	if (catchedPig=true){
+/*	if (catchedPig=true){
 		return;
-	}
-	let cSize = carElem.offsetWidth+"px";
-	let pSize = pigElem.offsetWidth+"px"; 
+	} */
+	let cSize = carElem.offsetWidth;
+	let pSize = pigElem.offsetWidth; 
 	let cL =  parseInt(carElem.style.left);
 	let cT =  parseInt(carElem.style.top);
 	let pL =  parseInt(pigElem.style.left);
