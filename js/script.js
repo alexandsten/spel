@@ -126,16 +126,16 @@ function newPig() {
 	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
-	pigElem.style.left = parseInt(pigElem.style.left);
-	pigElem.style.top = parseInt(pigElem.style.top);
+	pigElem.style.left = x + "px";
+	pigElem.style.top = y + "px";
 	document.getElementById("pig").src = "img/pig.png";
 	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
 }
 
 function checkHit() {
-	let cSize = carElem.offsetWidth-20;
-	let pSize = pigElem.offsetWidth-20;
+	let cSize = carElem.offsetWidth;
+	let pSize = pigElem.offsetWidth;
 	let cL =  parseInt(carElem.style.left);
 	let cT =  parseInt(carElem.style.top);
 	let pL =  parseInt(pigElem.style.left);
