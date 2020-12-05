@@ -65,7 +65,7 @@ function startGame() {
 	carElem.src = "img/" + carImgs[carDir];
 	moveCar();
 	/* === Tillägg i labben === */
-	
+	newPig;
 
 } // End startGame
 // ------------------------------
@@ -123,5 +123,7 @@ function newPig {
 	let xLimit = boardwidth.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
-	
+	pigElem.style.left = x + "px";
+	pigElem.style.top = y + "px";
+	document.getElementById("pig").style.display = "visible";
 }
