@@ -12,7 +12,7 @@ var startBtn;			// Referens till startknappen
 var stopBtn;			// Referens till stoppknappen
 /* === Tillägg i labben === */
 var pigElem             //gris
-var pigTimerRef = null;       // timer
+var pigTimerRef = null;       // gris timer
 const pigDuration = 2000;
 // ------------------------------
 // Initiera globala variabler och koppla funktion till knapp
@@ -140,6 +140,7 @@ function checkHit() {
 	let pL =  x + "px";
 	let pT =  y + "px";
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
-		
+		clearTimeout(pigTimerRef);
+		document.getElementById("pig").src = "smack.png";
 	}
 }
