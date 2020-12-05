@@ -13,7 +13,7 @@ var stopBtn;			// Referens till stoppknappen
 /* === Tillägg i labben === */
 var pigElem             //gris
 var pigTimerRef = null;       // gris timer
-const pigDuration = 2000;
+const pigDuration = 4000;
 var pigNr;
 var hitCounter;
 var pigNrElem;
@@ -74,7 +74,7 @@ function startGame() {
 	pigTimerRef = setTimeout(newPig,pigDuration);
 	pigNr = 0;
 	hitCounter = 0;
-	pigNrElem.innerHTML = 0;
+	pigNr.innerHTML = 0;
 	hitCounter.innerHTML = 0;
 
 } // End startGame
@@ -152,7 +152,6 @@ function checkHit() {
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		clearTimeout(pigTimerRef);
 		document.getElementById("pig").src = "img/smack.png";
-		let now = new Date();
-		startTime = now.getTime();
+		pigTimerRef = setTimeout(newPig,pigDuration);
 	}
 }
