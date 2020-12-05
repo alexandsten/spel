@@ -76,8 +76,8 @@ function stopGame() {
 	startBtn.disabled = false;
 	stopBtn.disabled = true;
 	/* === Tillägg i labben === */
-	
-
+	if (pigTimerRef != null) clearTimeout(pigTimerRef);
+	document.getElementById("pig").style.display = "hidden";
 } // End stopGame
 // ------------------------------
 // Flytta bilen ett steg framåt i bilens riktning
@@ -130,4 +130,13 @@ function newPig() {
 	pigElem.style.top = y + "px";
 	document.getElementById("pig").style.display = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
+}
+
+function checkHit() {
+	let cSize = carElem.offsetWidth;
+	let pSize = pigElem.offsetWidth;
+	cL
+	cT
+	pL
+	pT
 }
