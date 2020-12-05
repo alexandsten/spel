@@ -135,8 +135,11 @@ function newPig() {
 function checkHit() {
 	let cSize = carElem.offsetWidth;
 	let pSize = pigElem.offsetWidth;
-	cL
-	cT
-	pL
-	pT
+	let cL =  x + "px";
+	let cT =  y + "px";
+	let pL =  x + "px";
+	let pT =  y + "px";
+	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
+		
+	}
 }
