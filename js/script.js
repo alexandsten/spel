@@ -36,7 +36,7 @@ function init() {
 		stopBtn.disabled = true;
 	/* === Tillägg i labben === */
 		pigElem = document.getElementById("pig");
-		pignrElem = document.getElementById("pigNr");
+		pigNrElem = document.getElementById("pigNr");
 		hitCounterElem = document.getElementById("hitCounter");
 
 } // End init
@@ -140,6 +140,22 @@ function newPig() {
 	document.getElementById("pig").src = "img/pig.png";
 	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
+	if (pigNr<10) {
+		let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
+	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
+	let x = Math.floor(xLimit * Math.random()) + 10;
+	let y = Math.floor(yLimit * Math.random()) + 10;
+	pigElem.style.left = x + "px";
+	pigElem.style.top = y + "px";
+	document.getElementById("pig").src = "img/pig.png";
+	pigElem.style.visibility = "visible";
+	pigTimerRef = setTimeout(newPig,pigDuration);
+	pigNr++;
+	pigNrElem = pigNr;
+	}
+	else {
+		stopGame;
+	}
 }
 
 function checkHit() {
@@ -150,6 +166,7 @@ function checkHit() {
 	let pL =  parseInt(pigElem.style.left);
 	let pT =  parseInt(pigElem.style.top);
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
+		alert("Hello! I am an alert box!!");
 		clearTimeout(pigTimerRef);
 		document.getElementById("pig").src = "img/smack.png";
 		pigTimerRef = setTimeout(newPig,pigDuration);
