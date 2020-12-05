@@ -11,13 +11,14 @@ var timerRef = null;	// Referens till timern för bilens förflyttning
 var startBtn;			// Referens till startknappen
 var stopBtn;			// Referens till stoppknappen
 /* === Tillägg i labben === */
-var pigElem             //gris
+var pigElem;            //gris
 var pigTimerRef = null;       // gris timer
 const pigDuration = 4000;
 var pigNr;
 var hitCounter;
 var pigNrElem;
 var hitCounterElem;
+var catchedPig;
 // ------------------------------
 // Initiera globala variabler och koppla funktion till knapp
 function init() {
@@ -74,9 +75,9 @@ function startGame() {
 	pigTimerRef = setTimeout(newPig,pigDuration);
 	pigNr = 0;
 	hitCounter = 0;
-	pigNr.innerHTML = 0;
-	hitCounter.innerHTML = 0;
-
+	pigNr = 0;
+	hitCounter = 0;
+	catchedPig = true;
 } // End startGame
 // ------------------------------
 // Stoppa spelet
@@ -152,6 +153,7 @@ function newPig() {
 	pigTimerRef = setTimeout(newPig,pigDuration);
 	pigNr++;
 	pigNrElem = pigNr;
+	catchedPig = false;
 	}
 	else {
 		stopGame;
@@ -159,6 +161,9 @@ function newPig() {
 }
 
 function checkHit() {
+	if (catchedPig=true){
+		return;
+	}
 	let cSize = carElem.offsetWidth;
 	let pSize = pigElem.offsetWidth;
 	let cL =  parseInt(carElem.style.left);
@@ -172,5 +177,6 @@ function checkHit() {
 		pigTimerRef = setTimeout(newPig,pigDuration);
 		hitCounter++;
 		hitCounterElem = hitCounter;
+		catchedPig = true;
 	}
 }
