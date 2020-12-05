@@ -126,8 +126,8 @@ function newPig() {
 	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
-	pigElem.style.left = x + "px";
-	pigElem.style.top = y + "px";
+	pigElem.style.left = parseInt(pigElem.style.left);
+	pigElem.style.top = parseInt(pigElem.style.top);
 	document.getElementById("pig").src = "img/pig.png";
 	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
