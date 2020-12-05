@@ -72,6 +72,10 @@ function startGame() {
 	moveCar();
 	/* === Tillägg i labben === */
 	pigTimerRef = setTimeout(newPig,pigDuration);
+	pigNr = 0;
+	hitCounter = 0;
+	pigNrElem.innerHTML = 0;
+	hitCounter.innerHTML = 0;
 
 } // End startGame
 // ------------------------------
