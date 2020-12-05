@@ -170,5 +170,7 @@ function checkHit() {
 		clearTimeout(pigTimerRef);
 		document.getElementById("pig").src = "img/smack.png";
 		pigTimerRef = setTimeout(newPig,pigDuration);
+		hitCounter++;
+		hitCounterElem = hitCounter;
 	}
 }
