@@ -133,8 +133,8 @@ function newPig() {
 }
 
 function checkHit() {
-	let cSize = carElem.offsetWidth;
-	let pSize = pigElem.offsetWidth;
+	let cSize = carElem.offsetWidth-20;
+	let pSize = pigElem.offsetWidth-20;
 	let cL =  parseInt(carElem.style.left);
 	let cT =  parseInt(carElem.style.top);
 	let pL =  parseInt(pigElem.style.left);
