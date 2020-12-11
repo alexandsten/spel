@@ -75,8 +75,8 @@ function startGame() {
 	pigTimerRef = setTimeout(newPig,pigDuration);
 	pigNr = 0;
 	hitCounter = 0;
-	pigNr = 0;
-	hitCounter = 0;
+	pigNrElem.innerHTML = 0;
+	hitCounterElem.innerHTML = 0;
 	catchedPig = true;
 } // End startGame
 // ------------------------------
@@ -142,18 +142,18 @@ function newPig() {
 	pigElem.style.visibility = "visible";
 	pigTimerRef = setTimeout(newPig,pigDuration);
 	if (pigNr<10) {
+		pigNr++;
+		pigNrElem.innerHTML = pigNr;
 		let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
-	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
-	let x = Math.floor(xLimit * Math.random()) + 10;
-	let y = Math.floor(yLimit * Math.random()) + 10;
-	pigElem.style.left = x + "px";
-	pigElem.style.top = y + "px";
-	document.getElementById("pig").src = "img/pig.png";
-	pigElem.style.visibility = "visible";
-	pigTimerRef = setTimeout(newPig,pigDuration);
-	pigNr++;
-	pigNrElem = pigNr;
-	catchedPig = false;
+		let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
+		let x = Math.floor(xLimit * Math.random()) + 10;
+		let y = Math.floor(yLimit * Math.random()) + 10;
+		pigElem.style.left = x + "px";
+		pigElem.style.top = y + "px";
+		document.getElementById("pig").src = "img/pig.png";
+		pigElem.style.visibility = "visible";
+		pigTimerRef = setTimeout(newPig,pigDuration);
+		catchedPig = false;
 	}
 	else {
 		stopGame;
@@ -177,6 +177,5 @@ function checkHit() {
 		hitCounter++;
 		hitCounterElem = hitCounter;
 		catchedPig = true;
-		alert("Hello! I am an alert box!!");
 	}
 }
