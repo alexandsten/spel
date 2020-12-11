@@ -13,7 +13,7 @@ var stopBtn;			// Referens till stoppknappen
 /* === Tillägg i labben === */
 var pigElem;            //gris
 var pigTimerRef = null;       // gris timer
-const pigDuration = 4000;
+const pigDuration = 2000;
 var pigNr;
 var hitCounter;
 var pigNrElem;
@@ -126,13 +126,7 @@ function moveCar() {
 /* === Tillägg av nya funktioner i labben === */
 
 function newPig() {	
-	/* let xLimit = boardwidth-(pigwidth+20) = boardwidth-pigwidth-20; 
-	let xLimit = boardwidth-(pigwidth+20);
-	let yLimit = boardheight - pigheight - 20;
-	let x = Math.floor(xLimit * Math.random()) + 10;
-	let y = Math.floor(yLimit * Math.random()) + 10;
-	let xLimit = boardwidth.offsetWidth - pigElem.offsetWidth-20; */
-	let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
+/*	let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
 	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
 	let x = Math.floor(xLimit * Math.random()) + 10;
 	let y = Math.floor(yLimit * Math.random()) + 10;
@@ -140,8 +134,9 @@ function newPig() {
 	pigElem.style.top = y + "px";
 	document.getElementById("pig").src = "img/pig.png";
 	pigElem.style.visibility = "visible";
-	pigTimerRef = setTimeout(newPig,pigDuration);
+	pigTimerRef = setTimeout(newPig,pigDuration); */
 	if (pigNr<10) {
+		catchedPig = false;
 		pigNr++;
 		pigNrElem.innerHTML = pigNr;
 		let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
@@ -153,7 +148,6 @@ function newPig() {
 		document.getElementById("pig").src = "img/pig.png";
 		pigElem.style.visibility = "visible";
 		pigTimerRef = setTimeout(newPig,pigDuration);
-		catchedPig = false;
 	}
 	else {
 		stopGame;
@@ -161,9 +155,9 @@ function newPig() {
 }
 
 function checkHit() {
-/*	if (catchedPig=true){
+	if (catchedPig == true){
 		return;
-	} */
+	} 
 	let cSize = carElem.offsetWidth;
 	let pSize = pigElem.offsetWidth; 
 	let cL =  parseInt(carElem.style.left);
@@ -175,7 +169,7 @@ function checkHit() {
 		document.getElementById("pig").src = "img/smack.png";
 		pigTimerRef = setTimeout(newPig,pigDuration);
 		hitCounter++;
-		hitCounterElem = hitCounter;
+		hitCounterElem.innerHTML = hitCounter;
 		catchedPig = true;
 	}
 }
