@@ -87,7 +87,7 @@ function stopGame() {
 	stopBtn.disabled = true;
 	/* === Tillägg i labben === */
 	if (pigTimerRef != null) clearTimeout(pigTimerRef);		// avslutas spelet dyker grisen ej upp längre
-	document.getElementById("pig").style.display = "hidden";
+	pigElem.style.visibility = "hidden";
 } // End stopGame
 // ------------------------------
 // Flytta bilen ett steg framåt i bilens riktning
@@ -136,12 +136,12 @@ function newPig() {
 		let y = Math.floor(yLimit * Math.random()) + 10;
 		pigElem.style.left = x + "px";
 		pigElem.style.top = y + "px";
-		document.getElementById("pig").src = "img/pig.png";				// ge grisen rätt gris bild
+		pigElem.src = "img/pig.png";				// ge grisen rätt gris bild
 		pigElem.style.visibility = "visible";							// gör grisen synlig
 		pigTimerRef = setTimeout(newPig,pigDuration);
 	}
 	else {															// om det har dykt upp 10 grisar - stoppa spelet
-		stopGame;
+		stopGame();
 	}
 }
 //---------------- funktion för påkörd gris ----------------//
@@ -157,7 +157,7 @@ function checkHit() {
 	let pT =  parseInt(pigElem.style.top); 
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		clearTimeout(pigTimerRef);
-		document.getElementById("pig").src = "img/smack.png";			// byt bild på gris till överkörd gris bild *smack*
+		pigElem.src = "img/smack.png";			// byt bild på gris till överkörd gris bild *smack*
 		pigTimerRef = setTimeout(newPig,pigDuration);
 		hitCounter++;													// öka siffran för överkörd gris
 		hitCounterElem.innerHTML = hitCounter;
