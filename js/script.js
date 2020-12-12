@@ -11,14 +11,14 @@ var timerRef = null;	// Referens till timern för bilens förflyttning
 var startBtn;			// Referens till startknappen
 var stopBtn;			// Referens till stoppknappen
 /* === Tillägg i labben === */
-var pigElem;            //gris
+var pigElem;            //gris som skall bli påkörd
 var pigTimerRef = null;       // gris timer
-const pigDuration = 2000;
-var pigNr;
-var hitCounter;
-var pigNrElem;
-var hitCounterElem;
-var catchedPig;
+const pigDuration = 2000;   // hur länge grisen stannar
+var pigNr;                  // hur många grisar som dykt upp
+var hitCounter; 			// hur många grisar som blivit påkörda
+var pigNrElem;				// skriver ut hur många grisar som dykt upp
+var hitCounterElem;			// skriver ut hur många grisar som blivit påkörda
+var catchedPig;				// påkörd gris händelse
 // ------------------------------
 // Initiera globala variabler och koppla funktion till knapp
 function init() {
@@ -36,9 +36,9 @@ function init() {
 		startBtn.disabled = false;
 		stopBtn.disabled = true;
 	/* === Tillägg i labben === */
-		pigElem = document.getElementById("pig");
-		pigNrElem = document.getElementById("pigNr");
-		hitCounterElem = document.getElementById("hitCounter");
+		pigElem = document.getElementById("pig");					// grisen som skall köras på
+		pigNrElem = document.getElementById("pigNr");				// siffra för antalet gris som dykt upp
+		hitCounterElem = document.getElementById("hitCounter");		// siffra för antalet gris som kört över
 
 } // End init
 window.addEventListener("load",init);
@@ -72,12 +72,12 @@ function startGame() {
 	carElem.src = "img/" + carImgs[carDir];
 	moveCar();
 	/* === Tillägg i labben === */
-	pigTimerRef = setTimeout(newPig,pigDuration);
-	pigNr = 0;
-	hitCounter = 0;
-	pigNrElem.innerHTML = 0;
-	hitCounterElem.innerHTML = 0;
-	catchedPig = true;
+	pigTimerRef = setTimeout(newPig,pigDuration);		// grisens intervall att dyka upp
+	pigNr = 0;						// sätter antalet grisar som dykt upp till 0
+	hitCounter = 0;					// sätter antalet påkörda grisar till 0
+	pigNrElem.innerHTML = 0;		// sätter antalet grisar som dykt upp till 0 - i html
+	hitCounterElem.innerHTML = 0;	// sätter antalet påkörda grisar till 0 - i html
+	catchedPig = true;				// om grisen kört över eller ej, startar på true
 } // End startGame
 // ------------------------------
 // Stoppa spelet
@@ -86,7 +86,7 @@ function stopGame() {
 	startBtn.disabled = false;
 	stopBtn.disabled = true;
 	/* === Tillägg i labben === */
-	if (pigTimerRef != null) clearTimeout(pigTimerRef);
+	if (pigTimerRef != null) clearTimeout(pigTimerRef);		// avslutas spelet dyker grisen ej upp längre
 	document.getElementById("pig").style.display = "hidden";
 } // End stopGame
 // ------------------------------
@@ -118,7 +118,7 @@ function moveCar() {
 	carElem.style.top = y + "px";
 	timerRef = setTimeout(moveCar,timerStep);
 	/* === Tillägg i labben === */
-	checkHit();
+	checkHit();				// om grisen körts över
 
 } // End moveCar
 // ------------------------------
@@ -126,18 +126,9 @@ function moveCar() {
 /* === Tillägg av nya funktioner i labben === */
 
 function newPig() {	
-/*	let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
-	let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
-	let x = Math.floor(xLimit * Math.random()) + 10;
-	let y = Math.floor(yLimit * Math.random()) + 10;
-	pigElem.style.left = x + "px";
-	pigElem.style.top = y + "px";
-	document.getElementById("pig").src = "img/pig.png";
-	pigElem.style.visibility = "visible";
-	pigTimerRef = setTimeout(newPig,pigDuration); */
-	if (pigNr<10) {
-		catchedPig = false;
-		pigNr++;
+	if (pigNr<10) {							// om färre än 10 grisar dykt upp
+		catchedPig = false;							// om grisen inte blivit påkörd
+		pigNr++;									// öka nummret grisar som dykt upp
 		pigNrElem.innerHTML = pigNr;
 		let xLimit = boardElem.offsetWidth - pigElem.offsetWidth-20;
 		let yLimit = boardElem.offsetHeight - pigElem.offsetHeight-20;
@@ -145,20 +136,20 @@ function newPig() {
 		let y = Math.floor(yLimit * Math.random()) + 10;
 		pigElem.style.left = x + "px";
 		pigElem.style.top = y + "px";
-		document.getElementById("pig").src = "img/pig.png";
-		pigElem.style.visibility = "visible";
+		document.getElementById("pig").src = "img/pig.png";				// ge grisen rätt gris bild
+		pigElem.style.visibility = "visible";							// gör grisen synlig
 		pigTimerRef = setTimeout(newPig,pigDuration);
 	}
-	else {
+	else {															// om det har dykt upp 10 grisar - stoppa spelet
 		stopGame;
 	}
 }
-
+//---------------- funktion för påkörd gris ----------------//
 function checkHit() {
-	if (catchedPig == true){
+	if (catchedPig == true){				// om denna gris redan blivit påkörd - return
 		return;
 	} 
-	let cSize = carElem.offsetWidth;
+	let cSize = carElem.offsetWidth;									// arean för kollision för gris och bil
 	let pSize = pigElem.offsetWidth; 
 	let cL =  parseInt(carElem.style.left);
 	let cT =  parseInt(carElem.style.top);
@@ -166,10 +157,10 @@ function checkHit() {
 	let pT =  parseInt(pigElem.style.top); 
 	if (cL+10 < pL+pSize && cL+cSize-10 > pL && cT+10 < pT+pSize && cT+cSize-10 > pT) {
 		clearTimeout(pigTimerRef);
-		document.getElementById("pig").src = "img/smack.png";
+		document.getElementById("pig").src = "img/smack.png";			// byt bild på gris till överkörd gris bild *smack*
 		pigTimerRef = setTimeout(newPig,pigDuration);
-		hitCounter++;
+		hitCounter++;													// öka siffran för överkörd gris
 		hitCounterElem.innerHTML = hitCounter;
-		catchedPig = true;
+		catchedPig = true;												// denna gris har blivit påkörd
 	}
 }
